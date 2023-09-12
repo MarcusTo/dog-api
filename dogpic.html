@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Random Dog</title>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <img id="image"/>
+      <button id="button" onclick="get_random_dog_image()"> Get Random Dog Image </button>
+    </div>
+    <script>
+        function get_random_dog_image(){
+
+        url = "https://dog.ceo/api/breeds/image/random";
+
+        fetch(url)
+        .then(function(response){
+        return response.json();
+        })
+            .then(function(data){
+            display_image(data.message);
+        })
+            .catch(function(error){
+            console.log("Error: " + error);
+        });
+        }
+            function display_image(image_url){
+            document.getElementById("image").src = image_url;
+        }
+
+    </script>
+  </body>
